@@ -1,5 +1,29 @@
 /*jshint esversion: 6 */
 const guideList = document.querySelector('.guides');
+const loggedOut = document.querySelectorAll('.logged-out');
+const loggedIn = document.querySelectorAll('.logged-in');
+const account = document.querySelector('.account-details');
+
+const setupUI = (user) => {
+  if(user){
+    const html = `<div>Logged in as ${user.email}</div>`;
+    account.innerHTML=html;
+    loggedIn.forEach(item => {
+      item.style.display = 'block';
+    });
+    loggedOut.forEach(item => {
+      item.style.display = 'none';
+    });
+  }else{
+    account.innerHTML="";
+    loggedIn.forEach(item => {
+      item.style.display = 'none';
+    });
+    loggedOut.forEach(item => {
+      item.style.display = 'block';
+    });
+  }
+} 
 
 //setup guides
 const setupGuides = (data) => {
